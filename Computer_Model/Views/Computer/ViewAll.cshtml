@@ -1,0 +1,37 @@
+﻿@model  List<Computer_Model.Models.ComputerModel>
+@using Computer_Model.Models;
+@{
+    ViewBag.Title = "ViewAll";
+    int Index = 1;
+}
+
+
+<table class="table table-bordered" style="margin-top:30px;">
+    <thead>
+        <tr>
+            <th>SR No.</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>OS</th>
+        </tr>
+    </thead>
+    @foreach (ComputerModel computer in Model.ToList())
+    {
+            <tr>
+                <td>@Index</td>
+                <td>@computer.Computer_Name</td>
+                <td>@computer.Computer_Price</td>
+                <td>@computer.Document_Date.ToString("dd/MM/yyyy")</td>
+                <td>@computer.OS</td>
+            </tr>
+        Index++;
+    }
+    <tfoot>
+        <tr>
+            <th colspan="2">Total :</th>
+            <th>@Model.ToList().Sum(m => m.Computer_Price)</th>
+        </tr>
+    </tfoot>
+    </table>
+
